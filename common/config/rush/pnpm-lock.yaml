@@ -3951,7 +3951,7 @@ packages:
     dependencies:
       semver: 7.3.8
       shelljs: 0.8.5
-      typescript: 5.1.0-dev.20230331
+      typescript: 5.2.0-dev.20230606
     dev: false
 
   /ecdsa-sig-formatter/1.0.11:
@@ -8809,9 +8809,15 @@ packages:
     hasBin: true
     dev: false
 
-  /typescript/5.1.0-dev.20230331:
-    resolution: {integrity: sha512-PLypvuK09nEU9B7OTAx/4oG8foaYoeDTCBYlypMo5bF4L4MN54uLTy6dUwHdnw0QkTl6gjFKZQ4f/dUSZV/NFw==}
-    engines: {node: '>=12.20'}
+  /typescript/5.1.3:
+    resolution: {integrity: sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: false
+
+  /typescript/5.2.0-dev.20230606:
+    resolution: {integrity: sha512-aS+7vCKtiKKuzHFWW3sZ0zX1mHqSHESmM+LgOXx2jAMQ8NnHoT+7ixl37t0Z+JWXjOb0umUbgjBepaOLiGTuSQ==}
+    engines: {node: '>=14.17'}
     hasBin: true
     dev: false
 
@@ -16872,7 +16878,7 @@ packages:
     name: '@rush-temp/dev-tool'
     version: 0.0.0
     dependencies:
-      '@_ts/max': /typescript/5.0.3
+      '@_ts/max': /typescript/5.1.3
       '@_ts/min': /typescript/4.2.4
       '@microsoft/api-extractor': 7.34.4_@types+node@14.18.41
       '@rollup/plugin-commonjs': 24.0.1_rollup@2.79.1
@@ -19107,7 +19113,7 @@ packages:
     dev: false
 
   file:projects/schema-registry-json.tgz:
-    resolution: {integrity: sha512-z5emYE2b+L+WL1SpJsgRzM3krjLx29Css1Zggpx4vOuLUmfSBJYZWRoda93XxSBcgyRBv8I4BahJcoxYBsSK1Q==, tarball: file:projects/schema-registry-json.tgz}
+    resolution: {integrity: sha512-t9Knwjl+rLeFkA9/cEqPJ7RJRo958+yxOrbmA2DahnHH6vcmffz4B3kx3ET+Un7AeboXSKytMAexXi/i71RqNQ==, tarball: file:projects/schema-registry-json.tgz}
     name: '@rush-temp/schema-registry-json'
     version: 0.0.0
     dependencies:
@@ -19116,6 +19122,7 @@ packages:
       '@microsoft/api-extractor': 7.34.4_@types+node@16.18.21
       '@types/mocha': 7.0.2
       '@types/node': 16.18.21
+      '@types/uuid': 8.3.4
       ajv: 8.12.0
       cross-env: 7.0.3
       dotenv: 16.0.3
@@ -19141,6 +19148,7 @@ packages:
       source-map-support: 0.5.21
       tslib: 2.5.0
       typescript: 5.0.3
+      uuid: 8.3.2
     transitivePeerDependencies:
       - bufferutil
       - debug
