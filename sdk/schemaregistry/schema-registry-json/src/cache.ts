@@ -42,7 +42,7 @@ export function getCacheByDefinition(schema: string): CacheEntry | undefined {
   return cacheBySchemaDefinition.get(schema);
 }
 
-function getSchemaSerializers(
+function getSchemaValidator(
   schema: string,
   schemaObj?: SchemaObject
 ): { validator: AjvValidator } {
@@ -54,7 +54,7 @@ function getSchemaSerializers(
 }
 
 export function cache(id: string, schema: string, schemaObj?: SchemaObject): CacheEntry {
-  const entry = { id, ...getSchemaSerializers(schema, schemaObj) };
+  const entry = { id, ...getSchemaValidator(schema, schemaObj) };
   cacheById.set(id, entry.validator);
   cacheBySchemaDefinition.set(schema, entry);
   logger.verbose(
