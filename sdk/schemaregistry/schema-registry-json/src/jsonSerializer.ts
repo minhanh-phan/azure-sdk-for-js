@@ -92,13 +92,13 @@ export class JsonSerializer<MessageT = MessageContent> {
     const { data, contentType } = convertMessage(message, this.messageAdapter);
     const schemaId = getSchemaId(contentType);
     const validator = await this.getSchemaById(schemaId);
-    const parsedMessage = decoder.decode(data);
+    const messageToParse = decoder.decode(data);
     wrapError(
-      () => validator(parsedMessage),
+      () => validator(messageToParse),
       `Json validation for deserialization failed. See 'cause' for more details. Schema ID: ${schemaId}`
     );
     return wrapError(
-      () => JSON.parse(decoder.decode(data)),
+      () => JSON.parse(messageToParse),
       `Json deserialization failed with schema ID (${schemaId}). See 'cause' for more details.`
     );
   }
