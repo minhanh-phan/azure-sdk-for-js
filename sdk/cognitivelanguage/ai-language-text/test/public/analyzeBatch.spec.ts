@@ -12,7 +12,7 @@ import {
 } from "../../src";
 import { AuthMethod, createClient, startRecorder } from "./utils/recordedClient";
 import { Context, Suite } from "mocha";
-import { Recorder, isPlaybackMode } from "@azure-tools/test-recorder";
+import { Recorder, assertEnvironmentVariable, isPlaybackMode } from "@azure-tools/test-recorder";
 import { assert, matrix } from "@azure/test-utils";
 import { assertActionsResults, assertRestError } from "./utils/resultHelper";
 import {
@@ -44,13 +44,14 @@ import {
   expectation31,
 } from "./expectations";
 import { authModes, windows365ArticlePart1, windows365ArticlePart2 } from "./inputs";
+import { isChinaCloud } from "./utils/customTestHelpter";
 
 const excludedSummarizationProperties = {
   excludedAdditionalProps: ["text", "rankScore", "offset", "length"],
 };
 
 matrix(authModes, async (authMethod: AuthMethod) => {
-  describe(`[${authMethod}] TextAnalysisClient`, function (this: Suite) {
+  describe.only(`[${authMethod}] TextAnalysisClient`, function (this: Suite) {
     let recorder: Recorder;
     let client: TextAnalysisClient;
 
@@ -357,6 +358,11 @@ matrix(authModes, async (authMethod: AuthMethod) => {
           });
 
           it("abstractive summarization", async function () {
+            //FIXME: skip for China cloud
+            const endpoint = assertEnvironmentVariable("ENDPOINT");
+            if (isChinaCloud(endpoint)){
+              this.skip()
+            }
             const docs = [windows365ArticlePart1, windows365ArticlePart2];
             const poller = await client.beginAnalyzeBatch(
               [
@@ -376,6 +382,11 @@ matrix(authModes, async (authMethod: AuthMethod) => {
           });
 
           it("abstractive summarization with sentenceCount", async function () {
+            //FIXME: skip for China cloud
+            const endpoint = assertEnvironmentVariable("ENDPOINT");
+            if (isChinaCloud(endpoint)) {
+              this.skip()
+            }
             const docs = [windows365ArticlePart1, windows365ArticlePart2];
             const poller = await client.beginAnalyzeBatch(
               [

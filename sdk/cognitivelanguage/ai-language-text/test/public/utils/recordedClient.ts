@@ -17,12 +17,6 @@ const envSetupForPlayback: { [k: string]: string } = {
   ENDPOINT: "https://endpoint",
   AZURE_LANGUAGE_ENDPOINT: "https://endpoint",
   AZURE_LANGUAGE_KEY: "api_key",
-  CUSTOM_ENTITIES_PROJECT_NAME: "sanitized",
-  CUSTOM_ENTITIES_DEPLOYMENT_NAME: "sanitized",
-  SINGLE_LABEL_CLASSIFY_PROJECT_NAME: "sanitized",
-  SINGLE_LABEL_CLASSIFY_DEPLOYMENT_NAME: "sanitized",
-  MULTI_LABEL_CLASSIFY_PROJECT_NAME: "sanitized",
-  MULTI_LABEL_CLASSIFY_DEPLOYMENT_NAME: "sanitized",
 };
 
 const recorderStartOptions: RecorderStartOptions = {

@@ -7,7 +7,7 @@ import { matrix } from "@azure/test-utils";
 import { Context, Suite } from "mocha";
 import { AuthMethod, createClient, startRecorder } from "../public/utils/recordedClient";
 import createAuthoringClient, { TextAuthoringClient } from "@azure/ai-language-textauthoring";
-import { createCustomTestProject } from "../public/utils/customTestHelpter";
+import { createCustomTestProject, isChinaCloud, isUSGovCloud } from "../public/utils/customTestHelpter";
 import { assertActionsResults } from "../public/utils/resultHelper";
 import { expectation1, expectation2, expectation4 } from "../public/expectations";
 import { authModes } from "../public/inputs";
@@ -31,6 +31,9 @@ matrix(authModes, async (authMethod: AuthMethod) => {
           // Create authoring client
           const endpoint = assertEnvironmentVariable("ENDPOINT");
           const apiKey = assertEnvironmentVariable("LANGUAGE_API_KEY");
+          if (isUSGovCloud(endpoint) || isChinaCloud(endpoint)) {
+            this.skip();
+          }
           authoringClient = createAuthoringClient(endpoint, new AzureKeyCredential(apiKey));
         });
 

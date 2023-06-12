@@ -156,3 +156,12 @@ export async function createCustomTestProject(
     .put(deployParam);
   await polling(client, deployTask);
 }
+
+export function isChinaCloud(endpoint:string): boolean{
+  return endpoint.includes(".cn") ? true : false
+}
+
+export function isUSGovCloud(endpoint: string): boolean {
+  return endpoint.includes(".us") ? true : false
+
+}
