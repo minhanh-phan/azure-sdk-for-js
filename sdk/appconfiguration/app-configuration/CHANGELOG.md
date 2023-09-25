@@ -13,9 +13,6 @@
 
 ### Features Added
 
-- With the new preview API version `2022-11-01-preview`, added configuration settings snapshot feature that allows users to create a point-in-time snapshot of their configuration store.
-  [#24535](https://github.com/Azure/azure-sdk-for-js/pull/24535)
-
 ## 1.4.1 (2023-04-24)
 
 ### Features Added
