@@ -5,8 +5,6 @@
 
 ### Features Added
 
-- Allow setting `updateIntervalInMs` in `CreateSnapshotOptions`
-
 ### Bugs Fixed
 
 ### Other Changes
