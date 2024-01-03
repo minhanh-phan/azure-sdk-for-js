@@ -1,14 +1,26 @@
 # Release History
 
-## 1.0.0-beta.3 (Unreleased)
+## 1.0.0-beta.4 (Unreleased)
 
 ### Features Added
 
 ### Breaking Changes
 
+- added a prefix to result of "displayNameToName" function to prevent conflicts in name with existing, build-in widgets
+
 ### Bugs Fixed
 
 ### Other Changes
+
+## 1.0.0-beta.3 (2023-10-05)
+
+### Features Added
+
+- added options to specify tenant ID and redirect URI for InteractiveBrowserCredential of Azure Identity
+
+### Other Changes
+
+- updated "tools" package version
 
 ## 1.0.0-beta.2 (2022-08-26)
 
