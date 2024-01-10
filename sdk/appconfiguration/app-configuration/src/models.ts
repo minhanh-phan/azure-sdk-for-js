@@ -318,7 +318,12 @@ export interface ListConfigurationSettingsForSnapshotOptions
  * Also provides `fields` which allows you to selectively choose which fields are populated in the
  * result.
  */
-export interface ListConfigurationSettingsOptions extends OperationOptions, ListSettingsOptions {}
+export interface ListConfigurationSettingsOptions extends OperationOptions, ListSettingsOptions {
+  /**
+   * Match condition for list of etags values
+   */
+  matchConditions?: string[];
+}
 
 /**
  * Common options for 'list' style APIs in AppConfig used to specify wildcards as well as

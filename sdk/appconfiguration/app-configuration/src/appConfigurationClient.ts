@@ -332,6 +332,7 @@ export class AppConfigurationClient {
     options: ListConfigurationSettingsOptions = {}
   ): PagedAsyncIterableIterator<ConfigurationSetting, ListConfigurationSettingPage, PageSettings> {
     const pagedResult: PagedResult<ListConfigurationSettingPage, PageSettings, string | undefined> =
+      // TODO: send etags values
       {
         firstPageLink: undefined,
         getPage: async (pageLink: string | undefined) => {
