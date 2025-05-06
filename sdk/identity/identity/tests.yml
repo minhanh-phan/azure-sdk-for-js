@@ -22,7 +22,16 @@ extends:
       MatrixReplace:
         - Pool=.*LINUXNEXTPOOL.*/azsdk-pool-mms-ubuntu-2204-identitymsi
         - OSVmImage=.*LINUXNEXTVMIMAGE.*/azsdk-pool-mms-ubuntu-2204-1espt
+      PreSteps:
+        - pwsh: |
+            [System.Convert]::FromBase64String($env:PFX_CONTENTS) | Set-Content -Path $(Agent.TempDirectory)/test.pfx -AsByteStream
+            Set-Content -Path $(Agent.TempDirectory)/test.pem -Value $env:PEM_CONTENTS
+          env:
+            PFX_CONTENTS: $(PFX_CONTENTS)
+            PEM_CONTENTS: $(PEM_CONTENTS)
       EnvVars:
         AZURE_CLIENT_ID: $(IDENTITY_SP_CLIENT_ID)
         AZURE_CLIENT_SECRET: $(IDENTITY_SP_CLIENT_SECRET)
         AZURE_TENANT_ID: $(IDENTITY_SP_TENANT_ID)
+        IDENTITY_PEM_CONTENTS: $(PFX_CONTENTS)
+        IDENTITY_SP_CERT_PEM: $(Agent.TempDirectory)/test.pem

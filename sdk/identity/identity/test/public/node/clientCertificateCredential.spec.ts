@@ -29,10 +29,6 @@ describe("ClientCertificateCredential", function () {
     cleanup = setup.cleanup;
     recorder = setup.recorder;
     await recorder.setMatcher("BodilessMatcher");
-    if (isLiveMode()) {
-      // https://github.com/Azure/azure-sdk-for-js/issues/29929
-      ctx.skip();
-    }
   });
   afterEach(async function () {
     await cleanup();
