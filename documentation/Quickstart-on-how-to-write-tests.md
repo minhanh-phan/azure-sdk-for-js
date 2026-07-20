@@ -52,7 +52,7 @@ To be able to leverage the asset-sync workflow
 
 # How to run test
 
-This section describes how to run the SDK tests. If you want to run the tests of a specific project, go to that project's folder and execute `pnpm test`. All of the tests will automatically run both in NodeJS and in the browser. To target these environments individually, you can run `pnpm test:node` and `pnpm test:browser`. Let's take `purview-datamap-rest` as an example.
+This section describes how to run the SDK tests. If you want to run the tests of a specific project, go to that project's folder and execute `pnpm test`. Most packages wire `pnpm test` to run both Node.js and browser coverage, but some packages customize their scripts. Use `pnpm test:node` and `pnpm test:browser` when you want to target those environments individually. Let's take `purview-datamap-rest` as an example.
 
 To select a subset of test files and/or test cases:
 

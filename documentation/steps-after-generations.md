@@ -9,7 +9,7 @@ After this finishes, you will see the generated code in `src` folder in your **{
 
 ```shell
 pnpm install
-pnpm turbo build --filter=<your-package-name>...
+pnpm turbo build --filter=<your-package-name>... --token 1
 ```
 
 # Customizing the generated code
@@ -50,8 +50,8 @@ See the [Javascript Codegen Quick Start for Test](https://github.com/Azure/azure
     You could follow the [basic RLC test interaction and recording example](https://github.com/Azure/azure-sdk-for-js/blob/main/documentation/Quickstart-on-how-to-write-tests.md#example-1-basic-rlc-test-interaction-and-recording-for-azure-data-plane-service) to write your test step by step.
 
     Also, you could refer to the below examples for more cases:
-    - RLC example: [OpenAI Testing](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai/test/public)
-    - DPG example: [Maps Route Testing](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/maps/maps-route-rest/test/public)
+    - RLC example: [Maps Route Testing](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/maps/maps-route-rest/test/public)
+    - DPG example: [OpenAI Testing](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai/test/public)
     - MPG example: [Containerservice Fleet Testing](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/containerservice/arm-containerservicefleet/test/public/)
 
 2. **Run the test**
@@ -126,28 +126,20 @@ Now, you can generate both JavaScript and TypeScript workable samples with the f
 
 ```shell
 cd ${PROJECT_ROOT}
-npx dev-tool samples publish -f
+npx dev-tool samples publish
 ```
 You will see the workable samples in the `${PROJECT_ROOT}/samples` folder.
 
-# Format both the generated code and manual code
+# Format, lint, and package your changes
 
-After you have finished the generation and added your own tests or samples, you can use the following command to format the code.
-
-```shell
-cd ${PROJECT_ROOT} && pnpm format
-```
-
-Also, we'll recommend you to run `lint` command to analyze your code and quickly find any problems.
+After you have finished the generation and added your own tests or samples, run the package scripts from the package directory.
 
 ```shell
-cd ${PROJECT_ROOT} && pnpm lint
-```
-
-And we could use `lint:fix` if there are any errors.
-
-```shell
-cd ${PROJECT_ROOT} && pnpm lint:fix
+cd ${PROJECT_ROOT}
+pnpm format
+pnpm lint
+pnpm lint:fix
+pnpm pack
 ```
 
 # Adding a new third-party runtime dependency

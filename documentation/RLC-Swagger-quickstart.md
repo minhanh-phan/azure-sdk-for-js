@@ -92,7 +92,7 @@ We are working on to automatically generate everything right now, but currently,
 
     We enable the samples generation by default, this may fail the generation due to the example quality or codegen issue. You could turn this option off by `generate-sample: false` to non-block your process.
 
-    **After the first generation, you need to switch `generate-metadata: false` as we have some manual changes in this file and don't want them get overwritten by generated ones.**
+    **Keep `generate-metadata: true`. The generated package metadata belongs in source control and is regenerated as part of normal updates.**
 
     ---
 
@@ -228,7 +228,7 @@ Now, you can generate both JavaScript and TypeScript workable samples with the f
 
 ```shell
 cd ${PROJECT_ROOT}
-npx dev-tool samples publish -f
+npx dev-tool samples publish
 ```
 
 You will see the workable samples in the `${PROJECT_ROOT}/samples` folder.
@@ -237,22 +237,14 @@ Besides the generated samples, we also recommend you to add your HERO sample sce
 
 # Format both the generated code and manual code
 
-After you have finished the generation and added your own tests or samples, You can use the following command to format the code.
+After you have finished the generation and added your own tests or samples, run the package scripts from the package directory.
 
 ```shell
-cd ${PROJECT_ROOT} && pnpm format
-```
-
-Also we'll recommend you to run `lint` command to analyze your code and quickly find any problems.
-
-```shell
-cd ${PROJECT_ROOT} && pnpm lint
-```
-
-And we could use `lint:fix` if there are any errors.
-
-```shell
-cd ${PROJECT_ROOT} && pnpm lint:fix
+cd ${PROJECT_ROOT}
+pnpm format
+pnpm lint
+pnpm lint:fix
+pnpm pack
 ```
 
 # How to do customizations
