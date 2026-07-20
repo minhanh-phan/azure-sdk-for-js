@@ -3,8 +3,8 @@
 In this document, we will give a brief introduction on how to use the JavaScript SDK for new users.
 
 1. Prepare your environment.  
-    NodeJS: can be installed from https://nodejs.org/en/download/  
-    typescript: install it with `npm install -g typescript`.
+    Node.js: can be installed from https://nodejs.org/en/download/. Use a version supported by the package you want to try. In this repo, generated packages currently require Node.js 22 or newer.  
+    TypeScript: install it with `npm install -g typescript` if you want to compile `.ts` files locally.
 
 1. Create a empty folder and `cd` this folder.
 

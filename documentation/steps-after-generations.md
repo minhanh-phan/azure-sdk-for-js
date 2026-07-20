@@ -9,7 +9,7 @@ After this finishes, you will see the generated code in `src` folder in your **{
 
 ```shell
 pnpm install
-pnpm turbo build --filter=<your-package-name>...
+pnpm turbo build --filter=<your-package-name>... --token 1
 ```
 
 # Customizing the generated code
@@ -20,16 +20,17 @@ If the generated code does not fit your needs, you can use the JavaScript custom
 
 Install `js-sdk-release-tools`
 ```
-npm --prefix eng/tools/js-sdk-release-tools ci
+pnpm install
+pnpm --dir eng/tools/js-sdk-release-tools install
 ```
 
 After you build your package, run
 ```
-npm --prefix eng/tools/js-sdk-release-tools exec --no -- changelog-tool <your-package-path>
+pnpm --dir eng/tools/js-sdk-release-tools exec changelog-tool <your-package-path>
 ```
 Here is the example
 ```
-npm --prefix eng/tools/js-sdk-release-tools exec --no -- changelog-tool sdk/advisor/arm-advisor
+pnpm --dir eng/tools/js-sdk-release-tools exec changelog-tool sdk/advisor/arm-advisor
 ```
 
 # Improve README.md document
@@ -49,8 +50,8 @@ See the [Javascript Codegen Quick Start for Test](https://github.com/Azure/azure
     You could follow the [basic RLC test interaction and recording example](https://github.com/Azure/azure-sdk-for-js/blob/main/documentation/Quickstart-on-how-to-write-tests.md#example-1-basic-rlc-test-interaction-and-recording-for-azure-data-plane-service) to write your test step by step.
 
     Also, you could refer to the below examples for more cases:
-    - RLC example: [OpenAI Testing](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai/test/public)
-    - DPG example: [Maps Route Testing](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/maps/maps-route-rest/test/public)
+    - RLC example: [Maps Route Testing](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/maps/maps-route-rest/test/public)
+    - DPG example: [OpenAI Testing](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai/test/public)
     - MPG example: [Containerservice Fleet Testing](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/containerservice/arm-containerservicefleet/test/public/)
 
 2. **Run the test**
@@ -60,14 +61,14 @@ See the [Javascript Codegen Quick Start for Test](https://github.com/Azure/azure
     On Linux, you could use `export` to set env variable:
 
     ```shell
-    pnpm turbo build --filter=${PACKAGE_NAME}...
+    pnpm turbo build --filter=${PACKAGE_NAME}... --token 1
     export TEST_MODE=record && pnpm test # this will run live test and generate a recordings folder, you will need to submit it in the PR.
     ```
 
     On Windows, you could use `SET`:
 
     ```shell
-    pnpm turbo build --filter=${PACKAGE_NAME}...
+    pnpm turbo build --filter=${PACKAGE_NAME}... --token 1
     SET TEST_MODE=record&& pnpm test # this will run live test and generate a recordings folder, you will need to submit it in the PR.
     ```
 
@@ -76,13 +77,13 @@ See the [Javascript Codegen Quick Start for Test](https://github.com/Azure/azure
     On Linux, you could use below commands:
 
     ```shell
-      pnpm turbo build --filter=${PACKAGE_NAME}...
+      pnpm turbo build --filter=${PACKAGE_NAME}... --token 1
     export TEST_MODE=playback && pnpm test # this will run live test and generate a recordings folder, you will need to submit it in the PR.
     ```
     On Windows, you can use:
 
     ```shell
-    pnpm turbo build --filter=${PACKAGE_NAME}...
+    pnpm turbo build --filter=${PACKAGE_NAME}... --token 1
     SET TEST_MODE=playback&& pnpm test # this will run live test and generate a recordings folder, you will need to submit it in the PR.
     ```
 
@@ -125,28 +126,20 @@ Now, you can generate both JavaScript and TypeScript workable samples with the f
 
 ```shell
 cd ${PROJECT_ROOT}
-npx dev-tool samples publish -f
+npx dev-tool samples publish
 ```
 You will see the workable samples in the `${PROJECT_ROOT}/samples` folder.
 
-# Format both the generated code and manual code
+# Format, lint, and package your changes
 
-After you have finished the generation and added your own tests or samples, you can use the following command to format the code.
-
-```shell
-cd ${PROJECT_ROOT} && pnpm format
-```
-
-Also, we'll recommend you to run `lint` command to analyze your code and quickly find any problems.
+After you have finished the generation and added your own tests or samples, run the package scripts from the package directory.
 
 ```shell
-cd ${PROJECT_ROOT} && pnpm lint
-```
-
-And we could use `lint:fix` if there are any errors.
-
-```shell
-cd ${PROJECT_ROOT} && pnpm lint:fix
+cd ${PROJECT_ROOT}
+pnpm format
+pnpm lint
+pnpm lint:fix
+pnpm pack
 ```
 
 # Adding a new third-party runtime dependency
@@ -193,8 +186,8 @@ allow-list.
 Now, we can use the exact same steps to build a releasable artifact.
 
 ```shell
-pnpm update
-pnpm turbo build --filter=<your-package-name>...
+pnpm install
+pnpm turbo build --filter=<your-package-name>... --token 1
 cd <your-sdk-folder>
 export TEST_MODE=record && pnpm test
 pnpm pack

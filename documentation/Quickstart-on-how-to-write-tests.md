@@ -52,7 +52,7 @@ To be able to leverage the asset-sync workflow
 
 # How to run test
 
-This section describes how to run the SDK tests. If you want to run the tests of a specific project, go to that project's folder and execute `pnpm test`. All of the tests will automatically run both in NodeJS and in the browser. To target these environments individually, you can run `pnpm test:node` and `pnpm test:browser`. Let's take `purview-datamap-rest` as an example.
+This section describes how to run the SDK tests. If you want to run the tests of a specific project, go to that project's folder and execute `pnpm test`. Most packages wire `pnpm test` to run both Node.js and browser coverage, but some packages customize their scripts. Use `pnpm test:node` and `pnpm test:browser` when you want to target those environments individually. Let's take `purview-datamap-rest` as an example.
 
 To select a subset of test files and/or test cases:
 
@@ -129,11 +129,11 @@ After writing your test cases you need to run your test cases and record the tes
 
 ## Run tests in record mode
 
-Before running tests, it's advised to update the dependencies and build our project by running the command `pnpm install && pnpm turbo build --filter=<package-name>...`. Please notice this command is time-consuming and it will take around 10 mins, you could refer [here](https://github.com/Azure/azure-sdk-for-js/blob/main/CONTRIBUTING.md#resolving-dependency-version-conflicts) for more details.
+Before running tests, it's advised to install dependencies and build the project by running `pnpm install && pnpm turbo build --filter=<package-name>... --token 1`. Please notice this command is time-consuming and it will take around 10 mins, you could refer [here](https://github.com/Azure/azure-sdk-for-js/blob/main/CONTRIBUTING.md#resolving-dependency-version-conflicts) for more details.
 
 ```Shell
 > pnpm install
-> pnpm turbo build --filter=@azure-rest/purview-datamap...
+> pnpm turbo build --filter=@azure-rest/purview-datamap... --token 1
 ```
 
 Then, we could go to the project folder to run the tests. By default, if you don't specify `TEST_MODE`, it will run previously recorded tests.

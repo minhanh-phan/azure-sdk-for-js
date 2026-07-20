@@ -65,7 +65,7 @@ For more details on how authentication works in `@azure/identity`, please see th
 To begin, determine the target service and create a client to connect to it. In this example, we will use `AzureVMwareSolutionAPI` as the service. To manage a private cloud resource, you can instantiate the client as follows:
 
 ```typescript
-const client = new AzureVMwareSolutionAPI(credential, subscriptionId);
+const client = new AzureVMwareSolutionAPI(credential, subscriptionId!);
 ```
 
 ## Interacting with Azure Resources
@@ -93,7 +93,7 @@ import { DefaultAzureCredential } from "@azure/identity";
 ```typescript
 const subscriptionId = process.env.AZURE_SUBSCRIPTION_ID;
 const credential = new DefaultAzureCredential();
-const client = new AzureVMwareSolutionAPI(credential, subscriptionId);
+const client = new AzureVMwareSolutionAPI(credential, subscriptionId!);
 ```
 
 **_Create a private cloud_**  
@@ -127,7 +127,7 @@ import { DefaultAzureCredential } from "@azure/identity";
 ```typescript
 const subscriptionId = process.env.AZURE_SUBSCRIPTION_ID;
 const credential = new DefaultAzureCredential();
-const client = new AzureVMwareSolutionAPI(credential, subscriptionId);
+const client = new AzureVMwareSolutionAPI(credential, subscriptionId!);
 ```
 
 
