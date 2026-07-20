@@ -20,16 +20,17 @@ If the generated code does not fit your needs, you can use the JavaScript custom
 
 Install `js-sdk-release-tools`
 ```
-npm --prefix eng/tools/js-sdk-release-tools ci
+pnpm install
+pnpm --dir eng/tools/js-sdk-release-tools install
 ```
 
 After you build your package, run
 ```
-npm --prefix eng/tools/js-sdk-release-tools exec --no -- changelog-tool <your-package-path>
+pnpm --dir eng/tools/js-sdk-release-tools exec changelog-tool <your-package-path>
 ```
 Here is the example
 ```
-npm --prefix eng/tools/js-sdk-release-tools exec --no -- changelog-tool sdk/advisor/arm-advisor
+pnpm --dir eng/tools/js-sdk-release-tools exec changelog-tool sdk/advisor/arm-advisor
 ```
 
 # Improve README.md document
@@ -60,14 +61,14 @@ See the [Javascript Codegen Quick Start for Test](https://github.com/Azure/azure
     On Linux, you could use `export` to set env variable:
 
     ```shell
-    pnpm turbo build --filter=${PACKAGE_NAME}...
+    pnpm turbo build --filter=${PACKAGE_NAME}... --token 1
     export TEST_MODE=record && pnpm test # this will run live test and generate a recordings folder, you will need to submit it in the PR.
     ```
 
     On Windows, you could use `SET`:
 
     ```shell
-    pnpm turbo build --filter=${PACKAGE_NAME}...
+    pnpm turbo build --filter=${PACKAGE_NAME}... --token 1
     SET TEST_MODE=record&& pnpm test # this will run live test and generate a recordings folder, you will need to submit it in the PR.
     ```
 
@@ -76,13 +77,13 @@ See the [Javascript Codegen Quick Start for Test](https://github.com/Azure/azure
     On Linux, you could use below commands:
 
     ```shell
-      pnpm turbo build --filter=${PACKAGE_NAME}...
+      pnpm turbo build --filter=${PACKAGE_NAME}... --token 1
     export TEST_MODE=playback && pnpm test # this will run live test and generate a recordings folder, you will need to submit it in the PR.
     ```
     On Windows, you can use:
 
     ```shell
-    pnpm turbo build --filter=${PACKAGE_NAME}...
+    pnpm turbo build --filter=${PACKAGE_NAME}... --token 1
     SET TEST_MODE=playback&& pnpm test # this will run live test and generate a recordings folder, you will need to submit it in the PR.
     ```
 
@@ -193,8 +194,8 @@ allow-list.
 Now, we can use the exact same steps to build a releasable artifact.
 
 ```shell
-pnpm update
-pnpm turbo build --filter=<your-package-name>...
+pnpm install
+pnpm turbo build --filter=<your-package-name>... --token 1
 cd <your-sdk-folder>
 export TEST_MODE=record && pnpm test
 pnpm pack
