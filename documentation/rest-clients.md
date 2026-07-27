@@ -56,7 +56,7 @@ Additionally, most of our clients accept an `endpoint` parameter at initializati
 Authenticating with AAD
 Depending on your library, our clients support authenticating with an Azure Active Directory (AAD) token credential. We always recommend using a credential type obtained from the `@azure/identity` library for AAD authentication. For this example, we use the most common DefaultAzureCredential.
 
-As an installation note, the `@azure/identity` library is not a dependency of this library. Please run `npm install @azure/identity` before using AAD authentication
+As an installation note, the `@azure/identity` library is not a dependency of this library. Please run `npm install @azure/identity` (or `pnpm add @azure/identity`) before using AAD authentication
 
 The following code snippet shows you how to authenticate with a DefaultAzureCredential.
 
