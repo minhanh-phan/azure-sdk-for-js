@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "test": "node dist/index.js"
+    "test": "node dist/index.js",
+    "test:matrix": "node dist/matrix.js"
   },
   "dependencies": {
     "@azure/identity": "file:../../..",

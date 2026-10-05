@@ -158,6 +158,35 @@ npm run build
 npm test
 ```
 
+## Run the SAMI and UAMI matrix
+
+The matrix test validates both the object ID and client ID in each returned JWT. Run it once on an
+Arc machine with only its system-assigned identity and once on a machine with both system-assigned
+and user-assigned identities.
+
+Set the following inputs without copying their values into source:
+
+```text
+IDENTITY_ARC_MODE
+IDENTITY_ARC_SAMI_CLIENT_ID
+IDENTITY_ARC_SAMI_OBJECT_ID
+IDENTITY_ARC_UAMI_CLIENT_ID
+IDENTITY_ARC_UAMI_OBJECT_ID
+IDENTITY_ARC_UAMI_RESOURCE_ID
+```
+
+Use `IDENTITY_ARC_MODE=SAMI-only` for the SAMI fixture. Use
+`IDENTITY_ARC_MODE=SAMI+UAMI` and provide the UAMI values for the combined fixture.
+
+```bash
+npm run build
+npm run test:matrix
+```
+
+A literal UAMI-only Arc resource is not part of the matrix because Azure Arc uses its
+system-assigned identity for connected-machine operation. The combined fixture tests the UAMI-only
+authentication path by explicitly selecting the UAMI and validating its JWT claims.
+
 ## Cleanup
 
 Always:
