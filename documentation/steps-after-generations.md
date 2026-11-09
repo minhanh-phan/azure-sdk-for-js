@@ -77,13 +77,13 @@ See the [Javascript Codegen Quick Start for Test](https://github.com/Azure/azure
 
     ```shell
       pnpm turbo build --filter=${PACKAGE_NAME}... --token 1
-    export TEST_MODE=playback && pnpm test # this will run live test and generate a recordings folder, you will need to submit it in the PR.
+    export TEST_MODE=playback && pnpm test # replays existing recordings; no new recordings are generated.
     ```
     On Windows, you can use:
 
     ```shell
     pnpm turbo build --filter=${PACKAGE_NAME}... --token 1
-    SET TEST_MODE=playback&& pnpm test # this will run live test and generate a recordings folder, you will need to submit it in the PR.
+    SET TEST_MODE=playback&& pnpm test # replays existing recordings; no new recordings are generated.
     ```
 
 # How to write samples
@@ -261,7 +261,7 @@ You shall update the version number according to [semantic versioning rule](http
 
 ## Test recordings
 
-After [writing and running test cases](#how-to-write-test-for-dpgrlc), you need to push the recordings to [assets repo](https://github.com/Azure/azure-sdk-assets). Please refer to [push recording guide](https://github.com/Azure/azure-sdk-for-js/blob/main/documentation/Quickstart-on-how-to-write-tests.md#how-to-push-test-recordings-to-assets-repo) to push recordings.
+After [writing and running test cases](#how-to-write-test-for-dpgrlcmpg), you need to push the recordings to [assets repo](https://github.com/Azure/azure-sdk-assets). Please refer to [push recording guide](https://github.com/Azure/azure-sdk-for-js/blob/main/documentation/Quickstart-on-how-to-write-tests.md#how-to-push-test-recordings-to-assets-repo) to push recordings.
 
 ## Fix CI for PR
 
