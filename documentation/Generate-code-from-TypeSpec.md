@@ -97,7 +97,7 @@ npm --prefix eng/common/tsp-client ci
 For initial set up, from the root of the SDK repo, call
 
 ```
-npm --prefix eng/common/tsp-client exec --no -- tsp-client init -c <url-to-tspconfig>
+npm --prefix eng/common/tsp-client exec --no -- tsp-client init --tsp-config <url-to-tspconfig>
 ```
 
 For updating TypeSpec generated SDK, call below in the SDK module folder (`sdk/<service>/<module>`) where `tsp-location.yaml` exists
